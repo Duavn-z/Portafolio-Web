@@ -1053,3 +1053,84 @@ body { background-color: #EAEAEA; color: #1D1D1B; font-family: 'Libre Franklin',
 .logo-container:hover {
     transform: scale(1.05);
 }
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVE COMPLETA (Celulares y Tablets)
+   ========================================================================== */
+
+/* 1. AJUSTES PARA TABLETS (Pantallas menores a 992px) */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 4%; /* Reduce espacios en la cabecera */
+    }
+    
+    .logo-container {
+        width: 110px; /* Logo un toque más prudente en tablets */
+    }
+
+    .hero-wrapper {
+        grid-template-columns: 1fr; /* Pasa a una sola columna */
+        gap: 30px;
+        text-align: center;
+    }
+
+    .taza-wrapper-global {
+        height: 480px; /* Contenedor más bajo para que no ocupe toda la pantalla */
+    }
+
+    .taza-unificada-flotante {
+        width: 380px; /* Achicamos la taza para que quepa bien */
+    }
+
+    .intro-bubble {
+        transform: translateX(0); /* Quitamos el desvío a la izquierda */
+        padding: 35px 25px;
+    }
+
+    .description-text {
+        text-align: center;
+    }
+}
+
+/* 2. AJUSTES CRÍTICOS PARA CELULARES (Pantallas menores a 576px) */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 12px 4%;
+    }
+    
+    /* Si tus enlaces de menú se amontonan, con esto los espaciamos fino */
+    .navbar-links { 
+        gap: 12px;
+        font-size: 0.85rem;
+    }
+
+    .main-title {
+        font-size: 2.5rem; /* Título responsivo para que no rompa el bloque blanco */
+    }
+
+    .taza-wrapper-global {
+        height: 360px; /* Más compacto en teléfonos */
+    }
+
+    .taza-unificada-flotante {
+        width: 280px; /* Tamaño ideal para la pantalla de un celular */
+    }
+
+    /* Ajuste para que las carpetas 3D no se desborden a los lados */
+    .cards-grid-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 10px;
+    }
+
+    .folder-card-3d {
+        height: 280px; /* Un poco más bajas para que en celular sea cómodo hacer scroll */
+    }
+    
+    .folder-content-wrapper {
+        padding: 25px 20px;
+    }
+
+    .folder-content-wrapper h3 {
+        font-size: 1.5rem;
+    }
+}
