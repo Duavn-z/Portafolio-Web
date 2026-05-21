@@ -1,0 +1,1055 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GLOBAL (Fondo Gris Claro #EAEAEA)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #EAEAEA;
+    color: #1D1D1B;
+    font-family: 'Libre Franklin', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Líneas de fondo sutiles y difuminadas */
+.lineas-fondo-decoracion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/lineas-fondo-global.svg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.16; 
+    filter: invert(1) blur(1px); 
+    z-index: -1;
+    pointer-events: none;
+}
+
+.iphone-glass-bubble {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   2. NAVBAR & LOGO AGRANDADO
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(234, 234, 234, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* CAMBIO: Logo de la esquina izquierda optimizado y más grande */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;  /* Agrandado para mayor impacto visual */
+    height: auto;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.logo-container img:hover {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #575756;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #1D1D1B;
+}
+
+/* ==========================================================================
+   3. HERO SECTION (Estructura de dos columnas alineadas)
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 4% 80px 4%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 1300px;
+    width: 100%;
+}
+
+/* ==========================================================================
+   COLUMNA IZQUIERDA: COMPOSICIÓN GRÁFICA & TAZA MAXI MAX
+   ========================================================================== */
+.taza-graphics-composition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 540px;
+    background-image: url('../assets/lineas-marco-personaje.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* CAMBIO: Texto japonés con estilo premium, negro sólido y drop-shadow de profundidad */
+.japanese-text {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    font-family: 'Anton SC', sans-serif;
+    font-size: 5.5rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #1D1D1B; /* Negro sólido de tu paleta */
+    opacity: 0.95;
+    filter: drop-shadow(4px 4px 0px rgba(255, 255, 255, 0.8)) drop-shadow(-2px -2px 0px rgba(255, 255, 255, 0.8));
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+    z-index: 1;
+}
+
+/* CAMBIO: Contenedor de la taza escalado a tamaño Grande */
+.cup-sandwich-container {
+    position: relative;
+    width: 400px; /* Taza más grande e imponente */
+    height: 475px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 5;
+}
+
+/* Imagen de la taza de fondo */
+.taza-img-sandwich {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    filter: drop-shadow(0px 20px 45px rgba(0,0,0,0.28));
+}
+
+/* MÁSCARA REDONDA RECALIBRADA (Ajustada al nuevo tamaño grande de la taza) */
+.taza-clipping-mask {
+    position: absolute;
+    top: 65px;            /* Límite ovalado superior recalculado */
+    left: 18px;           /* Margen izquierdo proporcional */
+    width: 318px;         /* Ancho interno exacto de la boca */
+    height: 350px;        /* Caída del cuerpo de la taza */
+    border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+    overflow: hidden;     /* Mantiene el truco del recorte impecable */
+    z-index: 1;
+}
+
+/* Personaje dentro del corte de la boca */
+.personaje-img-sandwich {
+    position: absolute;
+    top: -42px;           /* Saca la cabeza y gorra limpiamente hacia arriba */
+    left: 5%;
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+    animation: flotarMascara 4.5s ease-in-out infinite;
+}
+
+@keyframes flotarMascara {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.02); }
+}
+
+/* ==========================================================================
+   COLUMNA DERECHA: TARJETA TIPOGRÁFICA RE-DISEÑADA
+   ========================================================================== */
+.intro-bubble {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 50px;
+    border-radius: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+.greeting {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #575756;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* CAMBIO: Tipografía 'Syne' ultra ancha y pesada para romper lo convencional */
+.main-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; /* Estilo super block/bold */
+    font-size: 5.6rem; /* Ajustado proporcionalmente al ancho de la fuente */
+    line-height: 0.9;
+    color: #1D1D1B;
+    margin-bottom: 15px;
+    letter-spacing: -2px; /* Junta las letras un poco para estilo de poster brutalista */
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #575756;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.description-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #575756;
+    margin-bottom: 35px;
+}
+
+.btn-contact {
+    display: inline-block;
+    background: #1D1D1B;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-contact:hover {
+    background: #E74C3C; /* Cambio dinámico al rojo de Duavn */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+}
+
+/* ==========================================================================
+   4. MARQUEE INFINITO
+   ========================================================================== */
+.ticker-tape-skewed {
+    background: #1D1D1B;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    transform: rotate(-3deg) scale(1.05);
+    margin: 80px 0;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.ticker-wrap {
+    display: flex;
+    width: 100%;
+}
+
+.ticker-move {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: tickerInfinita 18s linear infinite;
+}
+
+.ticker-item {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.7rem;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding-right: 30px;
+    letter-spacing: 2px;
+}
+
+@keyframes tickerInfinita {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ==========================================================================
+   5. MANUAL DE MARCA
+   ========================================================================== */
+.manual-section {
+    padding: 60px 8%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.initials-tabs {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 15px;
+    margin-bottom: 35px;
+}
+
+.tab-item {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.6rem;
+    color: #575756;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 5px 12px;
+}
+
+.tab-item:hover, .tab-item.active {
+    color: #1D1D1B;
+    transform: scale(1.12);
+}
+
+.slides-window {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.slide-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.96) translateX(40px);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide-card.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateX(0);
+}
+
+.slide-img-full {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+}
+
+/* ==========================================================================
+   6. PORTAFOLIO DE TRABAJOS (Carpetas)
+   ========================================================================== */
+.portfolio-works {
+    padding: 100px 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title-main {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #1D1D1B;
+    letter-spacing: 2px;
+}
+
+.folders-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.folder-wrapper {
+    position: relative;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.folder-tab {
+    width: 120px;
+    height: 35px;
+    border-radius: 12px 12px 0 0;
+    font-family: 'Anton SC', sans-serif;
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    position: absolute;
+    top: -34px;
+    left: 20px;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.folder-body {
+    width: 100%;
+    height: 220px;
+    padding: 30px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
+}
+
+.folder-content-inner h4 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: #1D1D1B;
+    letter-spacing: 1px;
+}
+
+.folder-content-inner p {
+    font-size: 0.9rem;
+    color: #575756;
+    line-height: 1.4;
+}
+
+.folder-wrapper:hover .folder-tab { transform: translateY(-10px); }
+.folder-wrapper:hover .folder-body {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   7. FOOTER
+   ========================================================================== */
+.main-footer {
+    padding: 80px 8% 30px 8%;
+}
+
+.footer-glass-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-info-left h3 {
+    font-family: 'Anton SC', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #1D1D1B;
+    letter-spacing: 1px;
+}
+
+.footer-info-left p {
+    color: #575756;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 450px;
+}
+
+.footer-contacts-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-item a {
+    font-size: 1.1rem;
+    color: #1D1D1B;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-item a:hover {
+    color: #575756;
+}
+
+.footer-credits {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTADO
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .taza-graphics-composition {
+        height: 460px;
+    }
+    .cup-sandwich-container {
+        width: 340px;
+        height: 405px;
+    }
+    .taza-clipping-mask {
+        top: 55px;
+        left: 15px;
+        width: 270px;
+        height: 300px;
+    }
+    .main-title {
+        font-size: 4.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-wrapper { text-align: center; }
+    .main-title { font-size: 3.5rem; }
+    .navbar { padding: 15px 5%; }
+    .nav-links { display: none; }
+    .slides-window { height: 380px; }
+    .japanese-text {
+        font-size: 3.8rem;
+        left: 0;
+    }
+}
+
+/* ==========================================================================
+   CONFIGURACIÓN GLOBAL (Mantenemos tus líneas de fondo y glass)
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { background-color: #EAEAEA; color: #1D1D1B; font-family: 'Libre Franklin', sans-serif; overflow-x: hidden; position: relative; }
+
+.lineas-fondo-decoracion {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: url('../assets/lineas-fondo-global.svg');
+    background-size: cover; background-position: center;
+    opacity: 0.16; filter: invert(1) blur(1px); z-index: -1; pointer-events: none;
+}
+
+.iphone-glass-bubble {
+    background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px; box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   NAVBAR (Con logo agrandado)
+   ========================================================================== */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(234, 234, 234, 0.85); backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.logo-container {
+    display: flex; align-items: center; justify-content: center;
+    width: 85px;  /* Agrandado */
+    height: auto;
+}
+
+.logo-container img {
+    width: 100%; height: 100%; object-fit: contain; display: block;
+}
+
+.nav-links { display: flex; list-style: none; gap: 35px; }
+.nav-links a { color: #575756; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+.nav-links a:hover, .nav-links a.active { color: #1D1D1B; }
+
+/* ==========================================================================
+   HERO SECTION (Estructura base)
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 140px 4% 80px 4%; position: relative; z-index: 2;
+}
+
+.hero-wrapper {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px;
+    align-items: center; max-width: 1300px; width: 100%;
+}
+
+/* ==========================================================================
+   EL SÁNDWICH VISUAL DE LA TAZA MAXI MAX
+   ========================================================================== */
+
+/* Contenedor principal: controla la perspectiva y el tamaño total */
+.taza-sandwich-master {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* La taza se alinea abajo */
+    perspective: 1000px;  /* Le da profundidad tridimensional al conjunto */
+}
+
+/* Texto japonés de fondo */
+.japanese-text {
+    writing-mode: vertical-rl; text-transform: uppercase;
+    font-family: 'Anton SC', sans-serif; font-size: 5rem;
+    font-weight: 900; letter-spacing: 4px; color: #1D1D1B;
+    opacity: 0.15; position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%); user-select: none; z-index: 0;
+}
+
+/* 1. Capa de Fondo: Taza (Asa y atrás) */
+.taza-capa-fondo {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 380px; /* Taza más grande */
+    height: auto;
+    object-fit: contain;
+    z-index: 1; /* Va detrás del personaje */
+    filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.15));
+}
+
+/* 2. Capa Media: Personaje flotando */
+.personaje-sandwich-flotante {
+    position: absolute;
+    /* Ajusta este valor para calibrar qué tanto se asoma el personaje por la boca */
+    bottom: 110px;        
+    left: 42%;
+    transform: translateX(-50%);
+    width: 82%;           /* Tamaño relativo del personaje dentro de la taza */
+    height: auto;
+    object-fit: contain;
+    z-index: 2;           /* El personaje vive en el medio del sándwich */
+    
+    /* Animación fluida de flotación que ya no corta la cabeza */
+    animation: flotarSándwich Master 4.5s ease-in-out infinite;
+}
+
+@keyframes flotarSándwich Master {
+    0%, 100% { transform: translateY(0px) translateX(-50%) scale(1); }
+    50% { transform: translateY(-15px) translateX(-50%) scale(1.02); }
+}
+
+/* 3. Capa Superior: Taza (Solo borde frontal) */
+.taza-capa-frente {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 380px;         /* Debe tener el mismo ancho que la capa de fondo */
+    height: auto;
+    object-fit: contain;
+    z-index: 3;           /* ¡Esto hace la magia! Queda ENFRENTE del personaje */
+    pointer-events: none; /* No estorba los clics del usuario */
+}
+
+/* ==========================================================================
+   TARJETA DE TEXTO (Con Syne brutalista)
+   ========================================================================== */
+.intro-bubble { padding: 50px; border-radius: 32px; }
+.greeting { font-size: 0.95rem; font-weight: 700; letter-spacing: 3px; color: #575756; margin-bottom: 10px; }
+
+.main-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 5.6rem; line-height: 0.9; color: #1D1D1B;
+    margin-bottom: 15px; letter-spacing: -2px;
+}
+
+.subtitle { font-size: 1.1rem; font-weight: 700; color: #575756; letter-spacing: 1px; margin-bottom: 25px; }
+.description-text { font-size: 1.05rem; line-height: 1.6; color: #575756; margin-bottom: 35px; }
+
+.btn-contact {
+    display: inline-block; background: #1D1D1B; color: #FFFFFF;
+    text-decoration: none; font-weight: 700; padding: 16px 36px;
+    border-radius: 50px; font-size: 0.95rem; letter-spacing: 1px;
+}
+.btn-contact:hover { background: #E74C3C; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3); }
+
+/* (El resto del CSS de ticker, carpetas, footer, etc., sigue igual) ... */
+
+/* ==========================================================================
+   CONTENEDOR DE LA TAZA (MAXI SIZE)
+   ========================================================================== */
+.taza-wrapper-global {
+    position: relative;
+    width: 100%;
+    height: 640px;        /* Altura extra para dar aire arriba y abajo */
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Centrado para que la animación tenga espacio */
+    overflow: visible;    /* CRÍTICO: Evita que se recorte la cabeza al subir */
+}
+
+/* Texto japonés de fondo */
+.japanese-text {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    font-family: 'Anton SC', sans-serif; 
+    font-size: 6.5rem;    /* Un poco más grande para acompañar la taza */
+    font-weight: 900; 
+    letter-spacing: 4px; 
+    color: #1D1D1B;
+    opacity: 0.12; 
+    position: absolute; 
+    left: -20px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    user-select: none; 
+    z-index: 0;
+}
+
+/* La imagen unificada: Súper grande y con flotación limpia */
+.taza-unificada-flotante {
+    position: relative;
+    width: 520px;         /* ¡Mucho más grande! Ajusta a tu gusto */
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+    
+    /* Filtro de sombra suave que se mueve con el elemento */
+    filter: drop-shadow(0px 20px 35px rgba(0, 0, 0, 0.12));
+    
+    /* Activación de la animación */
+    animation: flotarTodoJunto 5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   ANIMACIÓN DE FLOTACIÓN (Sin recortes)
+   ========================================================================== */
+@keyframes flotarTodoJunto {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        /* Sube 20px fluidos y le da un toque orgánico con inclinación mínima */
+        transform: translateY(-20px) rotate(-1deg);
+    }
+}
+/* ==========================================================================
+   EFECTO DE COPIADO (TOOLTIP)
+   ========================================================================== */
+.btn-contact {
+    position: relative;
+    cursor: pointer;
+    border: none; /* Quitamos el borde por defecto del botón */
+    outline: none;
+}
+
+/* El mensajito oculto por defecto */
+.btn-contact::after {
+    content: "¡Correo copiado!";
+    position: absolute;
+    bottom: 125%; /* Aparece arriba del botón */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #E74C3C; /* Tu color rojo de acento */
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+}
+
+/* Cuando JavaScript le agregue la clase .copiado, se muestra */
+.btn-contact.copiado::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   TARJETA / GLOBO DE TEXTO (Ajuste sutil a la izquierda)
+   ========================================================================== */
+.intro-bubble { 
+    padding: 55px; 
+    border-radius: 32px;
+    width: 120%;          
+    max-width: 750px;     
+    box-sizing: border-box; 
+    
+    /* El truco: Mueve la tarjeta exactamente 15 píxeles a la izquierda */
+    transform: translateX(-15px); 
+}
+/* ==========================================================================
+   TÍTULO PRINCIPAL (Ajuste de Tamaño)
+   ========================================================================== */
+.main-title {
+    font-family: 'Syne', sans-serif; 
+    font-weight: 800;
+    font-size: 3.8rem;     /* Lo bajamos para que no se coma la pantalla */
+    line-height: 1.0; 
+    color: #1D1D1B;
+    margin-bottom: 15px; 
+    letter-spacing: -1px;  /* Ajustamos el tracking para que no se peguen tanto las letras */
+}
+
+/* ==========================================================================
+   SECCIÓN DE CARPETAS CON EFECTO FLIP 3D
+   ========================================================================== */
+.portfolio-section {
+    padding: 100px 4%;
+    display: flex;
+    justify-content: center;
+}
+
+.cards-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* El contenedor principal de la tarjeta: define la perspectiva 3D */
+.folder-card-3d {
+    background-color: transparent;
+    height: 320px;
+    perspective: 1200px; /* Brinda profundidad al giro */
+    cursor: pointer;
+}
+
+/* El contenedor interno que realmente va a rotar */
+.folder-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); /* Giro suave premium */
+    transform-style: preserve-3d;
+}
+
+/* Cuando pasas el mouse por encima de la tarjeta, da la vuelta entera */
+.folder-card-3d:hover .folder-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Estilos compartidos por la cara frontal y trasera */
+.folder-card-front, .folder-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Oculta la cara contraria al girar */
+    backface-visibility: hidden;
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+}
+
+/* --------------------------------------------------------------------------
+   CARA FRONTAL (Tu diseño original)
+   -------------------------------------------------------------------------- */
+.folder-card-front {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    padding-top: 40px; /* Espacio para la pestaña superior */
+}
+
+/* Pestaña superior de la carpeta */
+.folder-tag {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    background: #575756;
+    color: #FFFFFF;
+    font-family: 'Anton SC', sans-serif;
+    font-size: 0.85rem;
+    padding: 6px 24px;
+    border-radius: 10px 10px 0 0;
+    letter-spacing: 1px;
+}
+
+.folder-tag.tag-black {
+    background: #1D1D1B;
+}
+
+/* Contenedor de textos */
+.folder-content-wrapper {
+    padding: 40px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.folder-content-wrapper h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #1D1D1B;
+    margin-bottom: 15px;
+}
+
+.folder-content-wrapper p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #575756;
+}
+
+/* --------------------------------------------------------------------------
+   CARA TRASERA (El respaldo con los links)
+   -------------------------------------------------------------------------- */
+.folder-card-back {
+    background: #1D1D1B; /* Respaldo negro minimalista para que contraste */
+    color: #FFFFFF;
+    transform: rotateY(180deg); /* Arranca dada la vuelta por defecto */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.folder-card-back h3 {
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+}
+
+.folder-card-back p {
+    color: #A6A6A6;
+    margin-bottom: 25px;
+}
+
+/* Botón de acción en el respaldo */
+.btn-folder-link {
+    display: inline-block;
+    align-self: flex-start;
+    background: #E74C3C; /* Tu rojo de acento de marca */
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 12px 28px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-folder-link:hover {
+    background: #FFFFFF;
+    color: #1D1D1B;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+}
+
+/* ==========================================================================
+   LINK DE INSTAGRAM (FOOTER)
+   ========================================================================== */
+.instagram-link-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;                  /* Espacio exacto entre el icono y el texto */
+    text-decoration: none;
+    color: #1D1D1B;             /* Tu color oscuro principal */
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Control de tamaño y color del icono SVG */
+.instagram-icon {
+    width: 22px;                /* Tamaño ideal para que conserve armonía con el texto */
+    height: 22px;
+    fill: #1D1D1B;              /* Pinta el SVG con tu color de marca */
+    transition: fill 0.2s ease;
+}
+
+/* Efecto Hover interactivo de nivel premium */
+.instagram-link-footer:hover {
+    transform: translateY(-2px); /* Pequeño salto orgánico */
+    opacity: 0.8;
+}
+
+.instagram-link-footer:hover .instagram-icon {
+    fill: #E74C3C
+    
+}
+
+/* ==========================================================================
+   NAVBAR & LOGO PRINCIPAL (Agrandado)
+   ========================================================================== */
+.navbar {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 8%; 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 100;
+    background: rgba(234, 234, 234, 0.85); 
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Contenedor del logo: ¡Mucho más grande y visible! */
+.logo-container {
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+    width: 140px;         /* Ajusta este valor si lo quieres todavía más gigante */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Asegura que el SVG/PNG interno llene el contenedor sin deformarse */
+.logo-container img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+    display: block;
+}
+
+/* Efecto hover sutil para mantener el estilo dinámico */
+.logo-container:hover {
+    transform: scale(1.05);
+}
